@@ -17,43 +17,66 @@ const Register = () => {
     };
 
     return (
-        <Container className="mt-5">
-            <h2>Cadastrar-se</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Digite seu email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Senha</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Digite sua senha"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </Form.Group>
-                <Form.Group controlId="formConfirmPassword">
-                    <Form.Label>Confirmar Senha</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Confirme sua senha"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Cadastrar
-                </Button>
-            </Form>
+        <Container className="text-center">
+            <h2 style={{
+                fontSize: '54pt',
+                border: 'none',
+                marginTop: '10vh',
+                color: 'white'
+            }}>U SLEEP</h2>
+            <div>
+                <h2 style={{
+                    fontSize: '16pt',
+                    border: 'none',
+                    marginTop: '10vh',
+                    color: 'white'
+                }}>Insira os dados abaixo</h2>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Digite seu email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Digite seu email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Senha</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Digite sua senha"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            />
+                    </Form.Group>
+                    <Form.Group controlId="formConfirmPassword">
+                        <Form.Label>Confirmar Senha</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Confirme sua senha"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                            />
+                    </Form.Group>
+                    <Button type="submit">
+                        Cadastrar
+                    </Button>
+                </Form>
+            </div>
         </Container>
     );
 };
