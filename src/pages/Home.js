@@ -19,7 +19,7 @@ const Home = () => {
                     <Col key={index} xs={6} sm={6} md={6} lg={6} className="mb-5">
                         <Card
                             style={{
-                                borderRadius: '15px',
+                                borderRadius: '25px',
                                 textAlign: 'center',
                                 padding: '20px',
                                 width: '150px',
