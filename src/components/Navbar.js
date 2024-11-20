@@ -1,19 +1,43 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FaHome } from 'react-icons/fa';
 
 const MyNavbar = () => {
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href="/">Meu Projeto</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                    <Nav.Link as={Link} to="/register">Cadastro</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
+        <Navbar
+            expand="lg"
+            className="custom-navbar"
+            style={{
+                position: 'relative',
+                minHeight: '15vh',
+                background: 'linear-gradient(180deg, black, transparent)',
+            }}
+        >
+            <Link
+                to="/"
+                style={{
+                    position: 'absolute',
+                    left: '10%',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: 'white',
+                }}
+            >
+                <FaHome size={48} />
+            </Link>
+
+            <Navbar.Brand
+                style={{
+                    position: 'absolute',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    color: 'white',
+                    fontWeight: 'bold',
+                }}
+            >
+                uSleep
+            </Navbar.Brand>
         </Navbar>
     );
 };
