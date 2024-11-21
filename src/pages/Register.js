@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../styles/register.css';
 
 const Register = () => {
+    const [user, setUser] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -21,62 +24,81 @@ const Register = () => {
             <h2 style={{
                 fontSize: '54pt',
                 border: 'none',
-                marginTop: '10vh',
+                marginTop: '7vh',
                 color: 'white'
             }}>U SLEEP</h2>
-            <div>
+            <div style={{
+                background: 'rgba(1, 1, 1, 0.5)',
+                padding: '2vh',
+                borderRadius: '3vh'
+            }}>
                 <h2 style={{
                     fontSize: '16pt',
                     border: 'none',
-                    marginTop: '10vh',
+                    marginTop: '5vh',
                     color: 'white'
                 }}>Insira os dados abaixo</h2>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="login">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
+                            className="input-form"
+                            type="text"
+                            placeholder="USUÁRIO"
+                            value={user}
+                            onChange={(e) => setUser(e.target.value)}
+                            required
+                            />
+                    </Form.Group>
+                    <Form.Group controlId="email">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            className="input-form"
                             type="email"
-                            placeholder="Digite seu email"
+                            placeholder="E-MAIL"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             />
                     </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Digite seu email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
+                    <Form.Group controlId="password">
                         <Form.Label>Senha</Form.Label>
                         <Form.Control
+                            className="input-form"
                             type="password"
-                            placeholder="Digite sua senha"
+                            placeholder="SENHA"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             />
                     </Form.Group>
-                    <Form.Group controlId="formConfirmPassword">
+                    <Form.Group controlId="confirmPassword">
                         <Form.Label>Confirmar Senha</Form.Label>
                         <Form.Control
+                            className="input-form"
                             type="password"
-                            placeholder="Confirme sua senha"
+                            placeholder="CONFIRMA"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                             />
                     </Form.Group>
-                    <Button type="submit">
+                    <Button type="submit" className='cadastrar'>
                         Cadastrar
                     </Button>
                 </Form>
             </div>
+                <p style={{
+                    marginTop: '2vh',
+                    color: 'white',
+                }}>Já possui uma conta?</p>
+            <Link to="/login">
+                <p style={{
+                    marginTop: '-2vh',
+                    color: 'white',
+                    textDecoration: 'underline'
+                }}>entrar</p>
+            </Link>
         </Container>
     );
 };

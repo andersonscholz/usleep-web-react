@@ -9,13 +9,13 @@ const Index = () => {
             <h2 style={{
                 fontSize: '54pt',
                 border: 'none',
-                marginTop: '10vh',
+                marginTop: '7vh',
                 color: 'white'
             }}>U SLEEP</h2>
             <h2 style={{
                 color: 'white',
                 fontWeight: '400',
-                marginTop: '47vh',
+                marginTop: '50vh',
                 marginBottom: '2vh',
             }}>TENHA O DESCANSO QUE VOCÊ MERECE!</h2>
             
