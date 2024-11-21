@@ -25,7 +25,8 @@ const Login = () => {
                 background: 'rgba(1, 1, 1, 0.5)',
                 padding: '2vh',
                 borderRadius: '3vh',
-                minHeight: '60vh'
+                minHeight: '49vh',
+                marginTop: '6vh'
             }}>
                 <h2 style={{
                     fontSize: '16pt',
@@ -36,7 +37,6 @@ const Login = () => {
                 }}>Login</h2>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="login">
-                        <Form.Label>Usuário</Form.Label>
                         <Form.Control
                             className="input-form"
                             type="text"
@@ -47,7 +47,6 @@ const Login = () => {
                             />
                     </Form.Group>
                     <Form.Group controlId="password">
-                        <Form.Label>Senha</Form.Label>
                         <Form.Control
                             className="input-form"
                             type="password"
@@ -57,14 +56,14 @@ const Login = () => {
                             required
                             />
                     </Form.Group>
-                    <div style={{minHeight: '5vh'}}></div>
+                    <div style={{minHeight: '3vh'}}></div>
                     <Button type="submit" className='cadastrar'>
                         Entrar
                     </Button>
                 </Form>
             </div>
                 <p style={{
-                    marginTop: '2vh',
+                    marginTop: '10vh',
                     color: 'white',
                 }}>Não possui conta?</p>
             <Link to="/register">

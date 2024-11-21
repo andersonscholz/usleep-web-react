@@ -5,6 +5,7 @@
     color: white !important;
     font-size: 16pt !important;
     padding-left: 3vh !important;
+    margin-top: 2vh;
 }
 
 .input-form::placeholder {

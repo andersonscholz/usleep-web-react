@@ -36,11 +36,11 @@ const Register = () => {
                     fontSize: '16pt',
                     border: 'none',
                     marginTop: '5vh',
+                    marginBottom: '5vh',
                     color: 'white'
                 }}>Insira os dados abaixo</h2>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="login">
-                        <Form.Label>Email</Form.Label>
                         <Form.Control
                             className="input-form"
                             type="text"
@@ -51,7 +51,6 @@ const Register = () => {
                             />
                     </Form.Group>
                     <Form.Group controlId="email">
-                        <Form.Label>Email</Form.Label>
                         <Form.Control
                             className="input-form"
                             type="email"
@@ -62,7 +61,6 @@ const Register = () => {
                             />
                     </Form.Group>
                     <Form.Group controlId="password">
-                        <Form.Label>Senha</Form.Label>
                         <Form.Control
                             className="input-form"
                             type="password"
@@ -73,7 +71,6 @@ const Register = () => {
                             />
                     </Form.Group>
                     <Form.Group controlId="confirmPassword">
-                        <Form.Label>Confirmar Senha</Form.Label>
                         <Form.Control
                             className="input-form"
                             type="password"
