@@ -1,5 +1,5 @@
 # Projeto uSleep
-Este é um projeto simples de um **site responsivo** construído em **React**.
+Este é um projeto simples de um **site responsivo** focado para mobile construído em **React**.
 
 ## Pré-requisitos
 
