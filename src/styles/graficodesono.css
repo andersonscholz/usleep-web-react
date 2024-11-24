@@ -1,0 +1,15 @@
+.card-grafico-sono{
+    border-radius: 30px !important;
+    text-align: center;
+    padding: 5px !important;
+    width: 20vh !important;
+    height: 20vh !important;
+    margin: 0 auto !important;
+    box-shadow: 20px 20px 60px black;
+    background: linear-gradient(145deg, #43CBFF, #9708CC);
+    border: none;
+    color: white;
+}
+.row-grafico-sono *{
+    padding: 2px !important;
+}

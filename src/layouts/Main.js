@@ -1,11 +1,11 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title }) => {
     return (
         <>
-            <NavBar />
-            <main style={{ marginTop: '5vh', padding: '20px' }}>{children}</main>
+            <NavBar title={title}/>
+            <main style={{padding: '20px' }}>{children}</main>
         </>
     );
 };

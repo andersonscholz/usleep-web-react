@@ -3,7 +3,7 @@ import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 
-const MyNavbar = () => {
+const MyNavbar = ({title}) => {
     return (
         <Navbar
             expand="lg"
@@ -15,7 +15,7 @@ const MyNavbar = () => {
             }}
         >
             <Link
-                to="/"
+                to="/home"
                 style={{
                     position: 'absolute',
                     left: '10%',
@@ -36,7 +36,7 @@ const MyNavbar = () => {
                     fontWeight: 'bold',
                 }}
             >
-                uSleep
+                {title}
             </Navbar.Brand>
         </Navbar>
     );
