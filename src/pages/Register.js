@@ -9,14 +9,33 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Lógica de cadastro (validações de senha e email)
         if (password !== confirmPassword) {
             alert('As senhas não coincidem!');
             return;
         }
-        console.log('Cadastro', { email, password });
+
+        const api = process.env.REACT_APP_API_URL + '/cadastro';
+
+        try {
+            const response = await fetch(api, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user, email, password })
+            });
+
+            if (response.ok) {
+                history.push('/login');
+            } else {
+                const errorData = await response.json();
+                alert(`Erro: ${errorData.message}`);
+            }
+        } catch (error) {
+            alert('Erro ao se conectar com o servidor. Tente novamente mais tarde.');
+        }
     };
 
     return (

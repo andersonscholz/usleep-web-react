@@ -5,8 +5,7 @@ Este é um projeto simples de um **site responsivo** focado para mobile constru�
 
 Antes de rodar o projeto, é necessário ter o seguinte instalado em sua máquina:
 
-- **Node.js**: [Baixe o Node.js aqui](https://nodejs.org/) (Inclui o npm).
-- **Git** (opcional, para clonar o repositório).
+- **Node.js**: [baixe aqui](https://nodejs.org/).
 
 ## Rodando o Projeto
 
