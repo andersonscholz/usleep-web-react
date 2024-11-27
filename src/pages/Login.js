@@ -10,7 +10,35 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Lógica de login
-        console.log('Login', { user, password });
+                    const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Accept", "application/json");
+
+            const raw = JSON.stringify({
+            "email": user,
+            "senha": password
+            });
+
+            const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+            };
+
+            fetch("http://127.0.0.1:8000/api/login", requestOptions)
+            .then((response) => response.json())
+                .then((result) => {
+                    const {access_token, data} = result;
+
+                    localStorage.setItem("access_token", access_token);
+                    localStorage.setItem("userId", data.id);
+                    localStorage.setItem("email", data.email);
+                    localStorage.setItem("nome", data.nome);
+                    
+                    window.location.href = "/Home";
+                })
+                .catch((error) => console.error(error));
     };
 
     return (

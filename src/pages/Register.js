@@ -1,6 +1,8 @@
+// src/pages/Register.js
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../services/api'; // Importa a instância do Axios
 import '../styles/register.css';
 
 const Register = () => {
@@ -8,33 +10,42 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setSuccess('');
+
         if (password !== confirmPassword) {
-            alert('As senhas não coincidem!');
+            setError('As senhas não coincidem!');
             return;
         }
 
-        const api = process.env.REACT_APP_API_URL + '/cadastro';
-
         try {
-            const response = await fetch(api, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ user, email, password })
+            const response = await api.post('/cadastro', {
+                nome: user, // Certifique-se de que o backend espera 'nome' em vez de 'user'
+                email: email,
+                senha: password
             });
 
-            if (response.ok) {
-                history.push('/login');
+            if (response.status === 201 || response.status === 200) {
+                setSuccess('Cadastro realizado com sucesso! Você será redirecionado para o login.');
+                // Redirecionar após um breve atraso para que o usuário veja a mensagem de sucesso
+                setTimeout(() => {
+                    navigate('/login');
+                }, 3000);
             } else {
-                const errorData = await response.json();
-                alert(`Erro: ${errorData.message}`);
+                setError('Erro ao realizar o cadastro. Tente novamente.');
             }
-        } catch (error) {
-            alert('Erro ao se conectar com o servidor. Tente novamente mais tarde.');
+        } catch (err) {
+            if (err.response && err.response.data) {
+                setError(err.response.data.message || 'Erro ao realizar o cadastro.');
+            } else {
+                setError('Erro ao conectar com o servidor. Tente novamente mais tarde.');
+            }
         }
     };
 
@@ -49,7 +60,9 @@ const Register = () => {
             <div style={{
                 background: 'rgba(1, 1, 1, 0.5)',
                 padding: '2vh',
-                borderRadius: '3vh'
+                borderRadius: '3vh',
+                minHeight: '49vh',
+                marginTop: '6vh'
             }}>
                 <h2 style={{
                     fontSize: '16pt',
@@ -58,6 +71,8 @@ const Register = () => {
                     marginBottom: '5vh',
                     color: 'white'
                 }}>Insira os dados abaixo</h2>
+                {error && <Alert variant="danger">{error}</Alert>}
+                {success && <Alert variant="success">{success}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="login">
                         <Form.Control
@@ -67,9 +82,9 @@ const Register = () => {
                             value={user}
                             onChange={(e) => setUser(e.target.value)}
                             required
-                            />
+                        />
                     </Form.Group>
-                    <Form.Group controlId="email">
+                    <Form.Group controlId="email" className="mt-3">
                         <Form.Control
                             className="input-form"
                             type="email"
@@ -77,9 +92,9 @@ const Register = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            />
+                        />
                     </Form.Group>
-                    <Form.Group controlId="password">
+                    <Form.Group controlId="password" className="mt-3">
                         <Form.Control
                             className="input-form"
                             type="password"
@@ -87,27 +102,27 @@ const Register = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            />
+                        />
                     </Form.Group>
-                    <Form.Group controlId="confirmPassword">
+                    <Form.Group controlId="confirmPassword" className="mt-3">
                         <Form.Control
                             className="input-form"
                             type="password"
-                            placeholder="CONFIRMA"
+                            placeholder="CONFIRMA SENHA"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
-                            />
+                        />
                     </Form.Group>
-                    <Button type="submit" className='cadastrar'>
+                    <Button type="submit" className='cadastrar mt-4'>
                         Cadastrar
                     </Button>
                 </Form>
             </div>
-                <p style={{
-                    marginTop: '2vh',
-                    color: 'white',
-                }}>Já possui uma conta?</p>
+            <p style={{
+                marginTop: '2vh',
+                color: 'white',
+            }}>Já possui uma conta?</p>
             <Link to="/login">
                 <p style={{
                     marginTop: '-2vh',
